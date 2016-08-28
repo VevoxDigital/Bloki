@@ -80,7 +80,7 @@ module.exports = function (grunt) {
       },
       livereload: {
         options: {
-          open: true,
+          //open: true,
           middleware: function (connect) {
             return [
               modRewrite(['^[^\\.]*$ /index.html [L]']),
@@ -116,7 +116,7 @@ module.exports = function (grunt) {
       },
       dist: {
         options: {
-          open: true,
+          //open: true,
           base: '<%= yeoman.dist %>'
         }
       }
