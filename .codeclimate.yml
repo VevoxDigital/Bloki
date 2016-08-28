@@ -1,0 +1,29 @@
+engines:
+  duplication:
+    enabled: false
+    checks:
+      Similar code:
+        enabled: false
+    config:
+      languages:
+      - javascript
+  eslint:
+    enabled: true
+    checks:
+      complexity:
+        enabled: false
+      global-require:
+        enabled: false
+    exclude_fingerprints: []
+  csslint:
+    enabled: true
+  fixme:
+    enabled: true
+ratings:
+  paths:
+  - app/**
+  - svr/**
+  - "**.js"
+exclude_paths:
+  - Gruntfile.js
+  - karma.conf.js
