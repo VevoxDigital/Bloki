@@ -24,11 +24,45 @@
 
     <!-- Add your site or application content here -->
     <header>
-      <nav>
-        <div class="container">
-          
-        </div>
-      </nav>
+      <div class="container">
+        <nav>
+          <div class="float-left">
+            <!-- TODO Dynamically fetch image, alt text, and link. -->
+            <a href="http://bloki.io" class="nav-brand">
+              <img src="images/banner_notext.png" alt="Bloki">
+            </a>
+          </div>
+          <ul class="nav-links">
+            <a href="/" class="active"><li>
+              <span class="mobile-hidden">Servers</span>
+              <span class="mobile-only fa fa-server"></span>
+            </li></a>
+            <a href="/backups"><li>
+              <span class="mobile-hidden">Backups</span>
+              <span class="mobile-only fa fa-database"></span>
+            </li></a>
+            <a href="/settings"><li>
+              <span class="mobile-hidden">Settings</span>
+              <span class="mobile-only fa fa-cog"></span>
+            </li></a>
+            <a href="/support"><li>
+              <span class="mobile-hidden">Support</span>
+              <span class="mobile-only fa fa-support"></span>
+            </li></a>
+          </ul>
+
+          <div class="float-right">
+            <a href="javascript:" class="profile">
+              <img src="/images/cube.png">
+              <i class="fa fa-chevron-down"></i>
+            </a>
+            <!-- TODO Link to OEM server purchase page -->
+            <button class="create-btn btn btn-lg btn-green" href="javascript:">Create Server</button>
+          </div>
+
+          <div class="float-clear"></div>
+        </nav>
+      </div>
     </header>
 
     <div class="container">

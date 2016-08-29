@@ -1,5 +1,6 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
+@import "font-awesome/scss/font-awesome.scss";
 // endbower
 
 // Include flat-ui colors.
@@ -26,24 +27,113 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 html, body {
   width: 100vw;
   overflow-x: hidden;
+  font-family: Lato, sans-serif;
+  color: grey;
 }
-
-
 .container {
   width: 95%;
   margin: 0 auto;
 }
+.btn {
+  border: none;
+  outline: none !important;
+  border-radius: 5px;
+  background-color: $white1;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  color: grey;
+  font-size: 10px;
+  transition: opacity 250ms;
+  &:hover { opacity: 0.75; }
+  &.btn-lg {
+    font-size: 14px;
+    padding: 12px 25px;
+  }
+  &.btn-blue      { color: $white; background-color: $blue1;      }
+  &.btn-green     { color: $white; background-color: $green1;     }
+  &.btn-bluegreen { color: $white; background-color: $bluegreen1; }
+}
+.mobile-hidden { display: none; }
+.mobile-only { display: initial; }
 
 // Header, including navbar.
 header {
-  padding: 10px 5vw;
+  nav {
+    vertical-align: middle;
+    padding: 25px;
+    .nav-brand {
+      height: 40px;
+      display: inline-block;
+      img { max-height: 100%; margin: 0; display: inline-block; }
+    }
+    .nav-links {
+      display: block;
+      height: 40px;
+      margin: 0;
+      padding-left: 10px;
+      float: left;
+      a {
+        font-size: 16px;
+        color: inherit;
+        text-decoration: none;
+        height: 40px;
+        display: inline-block;
+        transition: color 250ms, opacity 250ms;
+        &:hover {
+          color: $blue1;
+          opacity: 0.7;
+        }
+        &.active { color: $blue1; }
+        li {
+          height: 30px;
+          display: inline-block;
+          list-style-type: none;
+          padding: 12px 15px;
+          font-weight: bold;
+        }
+      }
+    }
+    .create-btn { display: inline-block; float: right; }
+    .profile {
+      display: inline-block;
+      float: right;
+      padding: 0 20px;
+      position: relative;
+      text-decoration: none;
+      color: inherit;
+      transition: opacity 250ms;
+      &:hover { opacity: 0.8; }
+      img {
+        display: inline-block;
+        position: relative;
+        top: -4px;
+        height: 46px;
+        width: 46px;
+        margin: 0;
+        border-radius: 50%;
+        background-color: $blue1;
+      }
+      i.fa-chevron-down {
+        display: inline-block;
+        color: $white2;
+        font-size: 14px;
+        font-weight: light;
+        height: 30px;
+        vertical-align: top;
+        padding: 12px;
+      }
+    }
+  }
 }
 
 /* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 800px) {
   .browsehappy {
     text-align: center;
   }
+  .mobile-only { display: none; }
+  .mobile-hidden { display: initial; }
 
   .container {
     width: 100%;
