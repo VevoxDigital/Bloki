@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="https://cdn.rawgit.com/VevoxDigital/Bloki/master/banner.png">
+  <img src="https://cdn.rawgit.com/VevoxDigital/Bloki/master/app/images/banner_notext.png">
 </p>
 <p align="center"><strong>
-  Free, Open-Source, and Easy to Use &amp; Install.
+  The Open-Source Minecraft Server Manager
 </strong></p>
 
 <div align="center">
