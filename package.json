@@ -4,7 +4,7 @@
   "scripts": {
     "test": "grunt test",
     "start": "node svr/index.js"
-  }
+  },
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
     "connect-modrewrite": "^0.9.0",
