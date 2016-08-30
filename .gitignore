@@ -43,5 +43,6 @@ sde/
 # Optional REPL history
 .node_repl_history
 
-# Servers directory
+# Servers/Jars directory
 servers/
+jars/
