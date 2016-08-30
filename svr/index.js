@@ -1,20 +1,50 @@
-console.log('Hey there! Just a sec while things are set up.');
+'use strict';
 
-const spawn = require('child_process').spawn;
+const winston = require('winston'),
+      path    = require('path'),
+      fs      = require('fs');
 
-const jar = spawn('java', ['-jar', __dirname + '/../jars/spigot-1.10.2.jar'], { cwd: 'servers/test-1' });
+// Make sure the logging directory exists...
+const logDir = path.join(__dirname, '..', 'logs');
+if (!fs.existsSync(logDir)) fs.mkdirSync(logDir);
 
-jar.stdout.on('data', (data) => {
-  console.log(data.toString());
+// Build the logger for immediate use.
+global.LOG = new (winston.Logger)({
+  transports: [
+    new (winston.transports.Console)({
+      colorize: true,
+      humanReadableUnhandledException: true,
+    }),
+    new (require('winston-daily-rotate-file'))({
+      name: 'daemon-info',
+      timestamp: true,
+      filename: path.join(logDir, 'daemon-info'),
+      json: false,
+      zippedArchive: true,
+      datePattern: '.yyyy.MM.dd.log'
+    }),
+    new (require('winston-daily-rotate-file'))({
+      name: 'daemon-errors',
+      level: 'error',
+      timestamp: true,
+      filename: path.join(logDir, 'daemon-errors'),
+      json: false,
+      zippedArchive: true,
+      datePattern: '.yyyy.MM.dd.log'
+    })
+  ]
 });
-jar.stderr.on('data', (data) => {
-  console.log(data.toString());
-});
 
+LOG.info('Loading configuration, please wait...');
+
+const cmdParser = require('./cmd');
 process.stdin.on('data', (data) => {
-  jar.stdin.write(new Buffer(data));
+  const args  = data.toString().slice(0, -1).split(' '),
+        cmd   = args.shift();
+  LOG.info(`CMD: '${data.toString().slice(0, -1)}'`);
+  try {
+    cmdParser(cmd, args);
+  } catch (e) {
+    LOG.error(e.message);
+  }
 });
-
-jar.on('close', () => {
-  console.log('closed');
-})
