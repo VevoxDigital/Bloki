@@ -23,7 +23,7 @@ ratings:
   paths:
   - app/**/*.{scss,sass,css,js,html}
   - src/**/*.js
-  - test/spec/**/*.js
+  - test/**/*.js
 exclude_paths:
   - Gruntfile.js
   - test/karma.conf.js
