@@ -47,6 +47,6 @@
 # Contributions
 
 # Legal
-All code, content, and other media created or otherwise contained within Blocki belongs to Vevox Digital and is licensed under the GNU General Public License v3.0, found [here](https://github.com/VevoxDigital/Bloki/blob/master/LICENSE).
+All code, content, and other media created or otherwise contained within Bloki belongs to Vevox Digital and is licensed under the GNU General Public License v3.0, found [here](https://github.com/VevoxDigital/Bloki/blob/master/LICENSE).
 
 Minecraft and related media are registered trademarks of Mojang, AB.
