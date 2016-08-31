@@ -14,7 +14,8 @@ engines:
         enabled: false
       global-require:
         enabled: false
-    exclude_fingerprints: []
+    exclude_fingerprints:
+    - 8fd38171704aced90dbaa8439100b67b # Silence linter about process.exit
   csslint:
     enabled: true
   fixme:
