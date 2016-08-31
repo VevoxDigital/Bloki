@@ -26,4 +26,4 @@ ratings:
   - "**.js"
 exclude_paths:
   - Gruntfile.js
-  - karma.conf.js
+  - test/karma.conf.js
