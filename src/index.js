@@ -16,7 +16,7 @@ global.LOG = new (winston.Logger)({
   transports: [
     new (winston.transports.Console)({
       colorize: true,
-      humanReadableUnhandledException: true,
+      humanReadableUnhandledException: true
     }),
     new (require('winston-daily-rotate-file'))({
       name: 'daemon-info',
