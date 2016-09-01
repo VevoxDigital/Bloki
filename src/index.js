@@ -18,3 +18,7 @@ require('./codes');
 
 // Load handlers for process events.
 require('./lib/process-events');
+
+// Load the server base.
+if (IS_MASTER) require('./svr-host');
+require('./svr');
