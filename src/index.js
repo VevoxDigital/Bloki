@@ -18,15 +18,3 @@ require('./codes');
 
 // Load handlers for process events.
 require('./lib/process-events');
-
-const cmdParser = require('./cmd');
-process.stdin.on('data', (data) => {
-  const args  = data.toString().slice(0, -1).split(' '),
-        cmd   = args.shift();
-  LOG.info(`CMD: '${data.toString().slice(0, -1)}'`);
-  try {
-    cmdParser(cmd, args);
-  } catch (e) {
-    LOG.error(e.message);
-  }
-});
