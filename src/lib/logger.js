@@ -5,7 +5,7 @@ const winston = require('winston'),
       path    = require('path');
 
 // Make sure the logging directory exists...
-const logDir = path.join(__dirname, '..', 'logs');
+const logDir = path.join(__dirname, '..', '..', 'logs');
 if (!fs.existsSync(logDir)) fs.mkdirSync(logDir);
 
 // Build the logger for immediate use.
