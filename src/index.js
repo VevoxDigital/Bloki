@@ -1,42 +1,11 @@
 'use strict';
 
-const winston = require('winston'),
-      path    = require('path'),
-      fs      = require('fs'),
+const path    = require('path'),
       config  = require('nconf'),
-      colors  = require('colors'),
-      Q       = require('q');
+      colors  = require('colors');
 
-// Make sure the logging directory exists...
-const logDir = path.join(__dirname, '..', 'logs');
-if (!fs.existsSync(logDir)) fs.mkdirSync(logDir);
-
-// Build the logger for immediate use.
-global.LOG = new (winston.Logger)({
-  transports: [
-    new (winston.transports.Console)({
-      colorize: true,
-      humanReadableUnhandledException: true
-    }),
-    new (require('winston-daily-rotate-file'))({
-      name: 'daemon-info',
-      timestamp: true,
-      filename: path.join(logDir, 'daemon-info'),
-      json: false,
-      zippedArchive: true,
-      datePattern: '.yyyy.MM.dd.log'
-    }),
-    new (require('winston-daily-rotate-file'))({
-      name: 'daemon-errors',
-      level: 'warning',
-      timestamp: true,
-      filename: path.join(logDir, 'daemon-errors'),
-      json: false,
-      zippedArchive: true,
-      datePattern: '.yyyy.MM.dd.log'
-    })
-  ]
-});
+// Load in the logger.
+require('./lib/logger');
 
 LOG.info('Loading configuration, please wait...');
 
