@@ -10,8 +10,18 @@ const shutdown = (code) => {
     if (!ERRORS[code]) code = 'UNKNOWN';
     code = code.toUpperCase();
     LOG.error(`Process exited with not-okay ${code} (code ${ERRORS[code]})`);
-  } else LOG.info('Process exited with okay code 0');
-  process.exit(code ? ERRORS[code] : 0);
+    process.exit(ERRORS[code]);
+  } else {
+    if (global.DAEMONS) {
+      DAEMONS.disconnectAll();
+      APP.close();
+    }
+    TEST_SOCKET.close();
+    LOG.info('Process exited with okay code 0');
+  }
+
+  // TODO Only exit if error. Try natrual shutdown if 0.
+
 };
 process.on('SIGINT', () => {
   console.log(); // Move the ^C to the next line.
