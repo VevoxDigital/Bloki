@@ -9,7 +9,9 @@ require('./lib/logger');
 
 LOG.info('Loading configuration, please wait...');
 
-config.argv().env().file(path.join(__dirname, '..', 'cfg', 'daemon.json'));
+global.__cfgdir = path.join(__dirname, '..', 'cfg');
+
+config.argv().env().file(path.join(__cfgdir, 'daemon.json'));
 global.IS_MASTER = config.get('master');
 LOG.info(`* Init daemon state: ${IS_MASTER ? 'master' : 'slave'}`);
 
