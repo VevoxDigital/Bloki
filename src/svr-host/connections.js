@@ -1,5 +1,7 @@
 'use strict';
 
+const _ = require('lodash');
+
 var connected = { };
 
 const self = {
@@ -10,6 +12,11 @@ const self = {
   },
   get: (name) => {
     return connected[name];
+  },
+  getAll: () => {
+    var all = [];
+    _.forEach(connected, (d) => { all.push(d); });
+    return all;
   },
   disconnect: (name) => {
     const daemon = connected[name];
