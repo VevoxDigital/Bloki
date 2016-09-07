@@ -1,5 +1,8 @@
 'use strict';
 
+const lockFile  = require('lockfile'),
+      path      = require('path');
+
 // Hook SIGINT callback.
 const shutdown = (code) => {
   LOG.info('Shutting down...');
@@ -16,6 +19,15 @@ const shutdown = (code) => {
       DAEMONS.disconnectAll();
       APP.close();
     }
+
+    try {
+      lockFile.unlockSync(path.join(__rootdir, 'daemon.lock'));
+    } catch (e) {
+      LOG.error('Failed to unlock daemon files.');
+      LOG.error('The \'daemon.lock\' may need to be deleted manually.');
+      LOG.error(e.toString());
+    }
+
     TEST_SOCKET.close();
     LOG.info('Process exited with okay code 0');
   }
@@ -42,3 +54,5 @@ process.on('uncaughtException', (err) => {
   LOG.error('* To prevent data loss, the daemon will shut down.');
   shutdown('UNHANDLED_EXCEPTION');
 });
+
+global.SHUTDOWN = shutdown;

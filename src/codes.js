@@ -1,6 +1,7 @@
 const codes = [
   'UNHANDLED_REJECTION',
-  'UNHANDLED_EXCEPTION'
+  'UNHANDLED_EXCEPTION',
+  'DAEMON_FILES_LOCKED'
 ];
 
 var i = 0;
